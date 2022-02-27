@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Overlay System
 In EoS, the game manages overlays via a hierarchy system, where some overlays need another one to be loaded to be loaded themselves. For each hierarchy tier, there can only be one overlay loaded, and there are 3 tiers. In the explanations, we'll refer to tier 0 as the core tier, tier 1 as the main tier, and tier 2 as the sub tier.
 ## Sub-Overlays
@@ -10,18 +11,32 @@ In this system, a sub-mechanic is defined of four things: an overlay group ID, a
 This system is not only restricted to _loading_ overlays: a main overlay can request itself to be loaded, and while this does nothing on its own, it can also let the sub-mechanic system take care of calling the sub-mechanic functions instead of doing it manually. The ARM9 binary also makes use of this system, albeit instead of loading itself, it simply doesn't load anything (using an overlay group of zero).
 
 The overlay hierarchy is structured as follows: 
+=======
+#Overlay System
+In EoS, the game manages overlays via a hierarchy system, where some overlays need another one to be loaded to be loaded themselves. For each hierarchy tier, there can only be one overlay loaded, and there are 3 tiers. The overlay hierarchy is structured as follows: (WIP)
+>>>>>>> e0b55d3 (Began draft of the Overlay System doc)
 - Overlay 0
     - Overlay 1
         - Overlay 9 (sky jukebox) 
         - Overlays 3-9
     - Overlay 2
 - Overlay 10 (game data/mechanics)
+<<<<<<< HEAD
     - Overlay 11 (ground engine)
+=======
+    - Overlay 11 (script engine)
+>>>>>>> e0b55d3 (Began draft of the Overlay System doc)
         - Overlay 15 (duskull bank) 
         - Overlays 12-28
     - Overlay 29 (dungeon mode)
         - Overlay 31 (dungeon menu) 
         - Overlays 30-33
     - Overlay 34 
+<<<<<<< HEAD
 - Overlay 35 (unused)
 
+=======
+- Overlay 35
+
+In addition to the overlay loading mechanism, the game also features a system that allows easy managing of overlays of tier 3 (as these are the ones that change most during gameplay and require little specialized setup, unlike overlays of tier 2.) This system takes of care of not only initializing and freeing data when the overlays are loaded, but it also takes care of calling the update routines.
+>>>>>>> e0b55d3 (Began draft of the Overlay System doc)
