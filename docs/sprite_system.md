@@ -1,0 +1,6 @@
+# Sprite System
+Explorers of Sky features several ways for displaying graphics to the screen; this document will focus on how the **sprite** approach is done, which sees use in displaying objects that may move around the screen or be animated in some way.
+## Understanding the Hardware
+To have a good understanding of how it all works, we first need to understand the way the hardware operates. Objects to be displayed on screen are all stored in **OAM (Object Attribute Memory)**, and each screen can feature at most 128 objects. OAM keeps track of the position of objects, what sprite they correspond to,
+## Object Buffer Sub-System
+The object buffer sub-system is one of the components of the Sprite System, which takes care not only of buffering writes to the OAM, but it also provides a cool functionality to sort objects by depth! The way it achieves this is by allocating a look-up table for the range of depths available, with each element Storing the index within the buffer of the last sprite to be stored at that depth. This table is then used to write the object data to the sorted buffer, which is finally copied to OAM. The table is read from last to first, which means the highest index on the table is placed closest to the start of OAM and therefore has higher priority. This sub-system doesn't touch the attribute data itself, including intrinsic priorities.
